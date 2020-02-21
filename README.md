@@ -3,12 +3,12 @@
 `develop`
 
 [![Build Status](https://travis-ci.com/gcivil-nyu-org/spring2020-cs-gy-9223-frontend.svg?branch=develop)](https://travis-ci.com/gcivil-nyu-org/spring2020-cs-gy-9223-frontend.svg?branch=develop)
-[![Coverage Status](https://coveralls.io/repos/github/gcivil-nyu-org/spring2020-cs-gy-9223-frontend/badge.svg?branch=develop)](https://coveralls.io/github/gcivil-nyu-org/spring2020-cs-gy-9223-frontend?branch=develop)
+[![Coverage Status](https://coveralls.io/repos/github/gcivil-nyu-org/spring2020-cs-gy-9223-frontend/badge.svg?branch=develop)](https://coveralls.io/github/gcivil-nyu-org/spring2020-cs-gy-9223-frontend?branch=develop&service=github)
 
 `master`
 
 [![Build Status](https://travis-ci.com/gcivil-nyu-org/spring2020-cs-gy-9223-frontend.svg?branch=master)](https://travis-ci.com/gcivil-nyu-org/spring2020-cs-gy-9223-frontend.svg?branch=master)
-[![Coverage Status](https://coveralls.io/repos/github/gcivil-nyu-org/spring2020-cs-gy-9223-frontend/badge.svg?branch=master)](https://coveralls.io/github/gcivil-nyu-org/spring2020-cs-gy-9223-frontend?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/gcivil-nyu-org/spring2020-cs-gy-9223-frontend/badge.svg?branch=master)](https://coveralls.io/github/gcivil-nyu-org/spring2020-cs-gy-9223-frontend?branch=master&service=github)
 
 # Team Project repo
 
