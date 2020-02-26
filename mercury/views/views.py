@@ -12,6 +12,7 @@ from ..event_check import require_event_code
 log = logging.getLogger(__name__)
 log.setLevel(logging.ERROR)
 
+
 class HomePageView(TemplateView):
     """This is the view for the homepage of the app."""
 

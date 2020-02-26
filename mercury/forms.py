@@ -16,18 +16,16 @@ class EventForm(forms.ModelForm):
         model = Event
         fields = "__all__"
         widgets = {
-            "name": forms.TextInput(
-                attrs={"id": "post-event-name", "required": True}
-            ),
+            "name": forms.TextInput(attrs={"id": "post-event-name", "required": True}),
             "location": forms.TextInput(
                 attrs={"id": "post-event-location", "required": True}
             ),
             "date": forms.DateInput(
-                attrs={"id": "post-event-date", "required":True, "type":"date"}
+                attrs={"id": "post-event-date", "required": True, "type": "date"}
             ),
             "comments": forms.Textarea(
-                attrs={"id": "post-event-comments", "required":False},
-            )
+                attrs={"id": "post-event-comments", "required": False},
+            ),
         }
 
 
