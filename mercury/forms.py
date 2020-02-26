@@ -22,8 +22,8 @@ class EventForm(forms.ModelForm):
             "location": forms.TextInput(
                 attrs={"id": "post-event-location", "required": True}
             ),
-            "date": forms.DateTimeInput(
-                attrs={"id": "post-event-date", "required":True, "class": "datepicker"} 
+            "date": forms.DateInput(
+                attrs={"id": "post-event-date", "required":True, "type":"date"}
             ),
             "comments": forms.Textarea(
                 attrs={"id": "post-event-comments", "required":False},

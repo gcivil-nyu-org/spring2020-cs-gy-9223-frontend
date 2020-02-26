@@ -1,15 +1,11 @@
 import logging
-
-from django.contrib import messages
-from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.urls import reverse
+from django.http import HttpResponse
 from django.views.generic import TemplateView
-
-from mercury.models import EventCodeAccess
 from ..event_check import require_event_code
 
 from mercury.forms import EventForm
+from mercury.models import Event
 
 log = logging.getLogger(__name__)
 log.setLevel(logging.ERROR)
@@ -28,4 +24,14 @@ class CreateEventView(TemplateView):
 
     @require_event_code
     def post(self, request, *args, **kwargs):
-    	return
+        post_event_name = request.POST.get("event_name")
+        post_event_location = request.POST.get("event_location")
+        post_event_date = request.POST.get("date")
+        post_event_comments = request.POST.get("comments")
+        event_data = Event(
+            event_name=post_event_name, event_location=post_event_location, date=post_event_date, comments=post_event_comments
+        )
+
+
+        event_data.save()
+        return render(request, 'dashboard.html')
