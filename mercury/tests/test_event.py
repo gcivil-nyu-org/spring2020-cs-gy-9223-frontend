@@ -10,7 +10,7 @@ TEST_COMMENTS = "this is coming from test_event.py"
 
 def create_simulated_event():
     Event.objects.create(
-        name=TEST_NAME,
+        event_name=TEST_NAME,
         event_location=TEST_EVENT_LOCATION,
         date=datetime.date.today(),
         comments=TEST_COMMENTS,
@@ -22,11 +22,11 @@ class TestEventModel(TestCase):
         create_simulated_event()
 
     def test_event(self):
-        foo = Event.objects.get(name=TEST_NAME)
-        self.assertEqual(foo.name, TEST_NAME)
+        foo = Event.objects.get(event_name=TEST_NAME)
+        self.assertEqual(foo.event_name, TEST_NAME)
 
-        foo = Event.objects.get(name=TEST_EVENT_LOCATION)
+        foo = Event.objects.get(event_location=TEST_EVENT_LOCATION)
         self.assertEqual(foo.event_location, TEST_EVENT_LOCATION)
 
-        foo = Event.objects.get(name=TEST_COMMENTS)
+        foo = Event.objects.get(comments=TEST_COMMENTS)
         self.assertEqual(foo.comments, TEST_COMMENTS)
