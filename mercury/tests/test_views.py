@@ -25,6 +25,7 @@ class TestViewsWithActiveEvent(TestCase):
         self.simulator_url = "mercury:simulator"
         self.can_url = "mercury:can-ui"
         self.stopwatch_url = "mercury:stopwatch"
+        self.event_url = "mercury:event"
 
         test_code = EventCodeAccess(event_code="testcode", enabled=True)
         test_code.save()
@@ -101,6 +102,19 @@ class TestViewsWithActiveEvent(TestCase):
         self.assertEqual(True, session["event_code_active"])
         self.assertEqual(True, session["event_code_known"])
 
+    def test_Event_GET_fail(self):
+        response, session = self._get_with_event_code(self.event_url, BADCODE)
+        self.assertEqual(302, response.status_code)
+        self.assertEqual("/", response.url)
+        self.assertEqual(True, session["event_code_active"])
+        self.assertEqual(False, session["event_code_known"])
+
+    def test_Event_GET_success(self):
+        response, session = self._get_with_event_code(self.event_url, TESTCODE)
+        self.assertEqual(200, response.status_code)
+        self.assertEqual(True, session["event_code_active"])
+        self.assertEqual(True, session["event_code_known"])
+
 
 class TestViewsWithoutActiveEvent(TestCase):
     def setUp(self):
@@ -138,6 +152,11 @@ class TestViewsWithoutActiveEvent(TestCase):
         response = self.client.get(reverse(self.stopwatch_url))
         self.assertEqual(200, response.status_code)
         self.assertTemplateUsed("stopwatch.html")
+
+    def test_Event_GET(self):
+        response = self.client.get(reverse(self.stopwatch_url))
+        self.assertEqual(200, response.status_code)
+        self.assertTemplateUsed("event.html")
 
 
 class TestLogout(TestCase):

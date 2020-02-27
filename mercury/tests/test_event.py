@@ -17,7 +17,7 @@ def create_simulated_event():
     )
 
 
-class TestSensorModels(TestCase):
+class TestEventModel(TestCase):
     def setUp(self):
         create_simulated_event()
 
