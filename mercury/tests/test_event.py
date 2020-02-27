@@ -13,7 +13,7 @@ def create_simulated_event():
         event_name=TEST_NAME,
         event_location=TEST_EVENT_LOCATION,
         date=datetime.date.today(),
-        comments=TEST_COMMENTS
+        comments=TEST_COMMENTS,
     )
 
 
