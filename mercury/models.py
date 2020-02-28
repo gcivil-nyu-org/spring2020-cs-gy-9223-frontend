@@ -1,6 +1,7 @@
 from django.db import models
 from annoying.fields import JSONField
 
+
 class Event(models.Model):
     event_name = models.CharField(max_length=100, null=False, unique=True)
     event_location = models.CharField(max_length=100, null=False, unique=False)
@@ -12,8 +13,8 @@ class Event(models.Model):
 
 
 class SensorFields(models.Model):
-    sensor_names = JSONField(blank=True, null=False)
-    display_names = JSONField(blank=True, null=False)
+    field_names = JSONField(blank=True, null=False)
+    field_display_names = JSONField(blank=True, null=False)
     data_types = JSONField(blank=True, null=False)
 
     def __str__(self):  # pragma: no cover
@@ -21,32 +22,24 @@ class SensorFields(models.Model):
 
 
 class CustomSensor(models.Model):
+    sensor_name = models.CharField(max_length=20, null=False, unique=True)
+    sensor_display_name = models.CharField(max_length=20, null=False, unique=True)
     fields = models.OneToOneField(
-        SensorFields,
-        on_delete=models.CASCADE,
-        blank=False,
-        null=False,
+        SensorFields, on_delete=models.CASCADE, blank=False, null=False,
     )
-    name = models.CharField(max_length=20, null=False, unique=True)
 
     def __str__(self):  # pragma: no cover
         return CustomSensor.__name__
 
 
 class SensorData(models.Model):
-    event_id = models.ForeignKey( # same event may be associated with multiple sensors
-        Event, 
-        on_delete=models.CASCADE,
-        blank=False,
-        null=False,
+    event_id = models.ForeignKey(  # same event may be associated with multiple sensors
+        Event, on_delete=models.CASCADE, blank=False, null=False,
     )
-    # session id? 
+    # session id?
     date = models.DateTimeField(null=False)
     custom_sensor_id = models.ForeignKey(
-        CustomSensor, 
-        on_delete=models.CASCADE,
-        blank=False,
-        null=False,
+        CustomSensor, on_delete=models.CASCADE, blank=False, null=False,
     )
     data = JSONField(blank=True, null=False)
 

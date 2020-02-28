@@ -14,6 +14,8 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='sensordata',
             name='custom_sensor_id',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='mercury.CustomSensor'),
+            field=models.
+            ForeignKey(on_delete=django.db.models.deletion.CASCADE,
+                       to='mercury.CustomSensor'),
         ),
     ]

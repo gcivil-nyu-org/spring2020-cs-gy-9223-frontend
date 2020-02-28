@@ -15,6 +15,9 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='sensordata',
             name='data',
-            field=annoying.fields.JSONField(blank=True, deserializer=json.loads, serializer=annoying.fields.dumps),
+            field=annoying.fields.
+            JSONField(blank=True,
+                      deserializer=json.loads,
+                      serializer=annoying.fields.dumps),
         ),
     ]
