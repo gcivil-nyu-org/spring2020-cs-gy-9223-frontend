@@ -3,7 +3,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Create Sensor</title>
+        <title>Configure Sensors</title>
         <link rel="icon" href="{% static 'mercury/motorsports_logo.png' %}">
         <!-- CSS -->
         <link rel="stylesheet" type="text/css" href="{% static 'mercury/style.css' %}">
@@ -14,75 +14,83 @@
     <body>
         {% include 'sidebar.html' %}
         <div id="grafana-base">
-        <!-- <div class="col-lg-6 col-md-6 mb-6 col-centered"> -->
-            <div id="grafana-panel">
+
+            <div class="panel">
                 <h1>
-                    Create Sensor
+                    Configure Sensors
                     <a class="grafana-btn grafana-btn-gray" id= "accordion-btn" onclick="myFunction()">
                         <i class="material-icons-outlined" id="expand_more" style="display: block">expand_more</i>
                         <i class="material-icons-outlined" id="expand_less" style="display: none">expand_less</i>
                     </a>
                 </h1>
-                
                 <div id="accordion-text">
                         This page is used to add new sensors to the database as well as edit currently existing sensors within the database.
                     <br>
                 </div>
                 <br>
+            </div>
 
-                
-                <form method="POST" action="" id="SensorForm">
-                    {% csrf_token %} 
+            <div id="existing_sensors">
+
+            </div>
+
+            <div id="grafana-panel">
+                <div>
+
+                    <h2>
+                        Create Sensor
+
+                    </h2>
+
+
+                    <form method="POST" action="" id="SensorForm">
+                    {% csrf_token %}
+                        <br>
+
+                        <ul class="sensor-list" id="sensor-list" name="sensor-list">
+
+                            <li class="sensor-list-sensor-name">
+                                <label for="sensor-name"><b><u>Sensor Name</u></b></label>
+
+                                <input type="text" id="sensor-name" name="sensor-name"/>
+                            </li>
+
+                            <br><br>
+
+                            <li class="sensor-list-field-name">
+                                <label for="field-name"><u>Field Name</u></label>
+                                <br>
+                                <input type="text" id="field-name" name="field-name"/>
+                            </li>
+
+                            <li class="sensor-list-field-type">
+                                <label for="field-type"><u>Field Type</u></label>
+                                <br>
+                                    <select id="field-type" name="field-type">
+                                        <option value="float">Float</option>
+                                        <option value="string">String</option>
+                                        <option value="bool">Boolean</option>
+                                    </select>
+                            </li>
+
+                            <hr>
+
+                        </ul class="end-sensor-list">
+                        <input align=right class="grafana-btn grafana-btn-blue" type="button" name="addfieldbutton" id="addfieldbutton" value="Add field""right">
+                        <br> <br>
+                        <div>
+                            <input class="simulator-btn grafana-btn
+                            grafana-btn-green" type="submit" name="submit"
+                            value="Create sensor">
+                        </div>
+                        <br> <br>
+                    </form>
+
                     <br>
-
-                    <ul class="sensor-list" id="sensor-list" name="sensor-list">
-
-                        <li class="sensor-list-sensor-name">
-                            <label for="sensor-name"><b><u>Sensor Name</u></b></label>
-                            <br>
-                            <input type="text"
-                                   id = "sensor-name"/>
-                        </li>
-
-                        <br><br>
-
-                        <li class="sensor-list-field-name">
-                            <label for="field-name"><u>Field Name</u></label>
-                            <br>
-                            <input type="text"
-                                   id = "field-name"/>
-                        </li>
-
-                        <li class="sensor-list-field-type">
-                            <label for="field-type"><u>Field Type</u></label>
-                            <br>
-                                <select id=field-type name=field-type>
-                                    <option value=float>Float</option>
-                                    <option value=string>String</option>
-                                    <option value=bool>Bool</option>
-                                </select>
-                        </li>
-
-                        <hr>
-
-                        <!-- <li class="sensor-list-add-field" id = "sensor-list-add-field">
-                            <input class="grafana-btn grafana-btn-green" type="button" name="addfieldbutton" id="addfieldbutton" value="+">
-                        </li class=end-sensor-list-element> -->
-                        <!-- <br><br> -->
-
-                    </ul class="end-sensor-list">
-                    <input align=right class="grafana-btn grafana-btn-blue" type="button" name="addfieldbutton" id="addfieldbutton" value="Add field""right"> 
-                    <br> <br>
-                    <div>
-                        <input class="cancelbutton simulator-btn grafana-btn grafana-btn-red" type="submit" name="submit" value="Cancel">
-                        <input class="submitbutton simulator-btn grafana-btn grafana-btn-green" type="submit" name="submit" value="Submit">
-                    </div>
-                    <br> <br>
-                </form>
+                    <p class="error" id="para"></p>
+                </div>
                 
-                
-                <br>
-                <p class="error" id="para"></p>
+
             </div>
         </div>
     </body>

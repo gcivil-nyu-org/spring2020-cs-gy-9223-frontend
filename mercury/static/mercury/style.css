@@ -122,6 +122,24 @@ input#id_can_msg{
   background-color: var(--light-background);
 }
 
+.inline-block-child {
+  display: inline-block;
+  width: 40%;
+}
+
+.panel {
+  border-color:var(--light-border);
+  background: var(--light-panel);
+  text-align: center;
+  margin: auto;
+  vertical-align: middle;
+  border-style: solid;
+  border-width: thin;
+  padding: 20px;
+  width: 600px;
+  overflow: hidden;
+}
+
 #grafana-panel {
   border-color:var(--light-border);
   background: var(--light-panel);
@@ -617,11 +635,6 @@ a {
     width: 40%;
     display: inline-block;
   }
-/* 
-  .sensor-list-add-field {
-    width: 13%;
-    display: inline-block;
-  } */
 
   .end-sensor-list {
     width: 100%;

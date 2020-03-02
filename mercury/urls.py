@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import simulator, views, dashboard, can, stopwatch, event, sensor
+from .views import simulator, views, dashboard, can, stopwatch, event, sensor, \
+    sensor_data
 
 app_name = "mercury"
 urlpatterns = [
@@ -13,4 +14,5 @@ urlpatterns = [
     path("can/", can.CANUI.as_view(), name="can-ui"),  # CAN Decoder UI endpoint
     path("event/", event.CreateEventView.as_view(), name="event"),
     path("sensor/", sensor.CreateSensorView.as_view(), name="sensor"),
+    path("sensor_data/", sensor_data.SensorDataView.as_view(), name="sensor_data"),
 ]

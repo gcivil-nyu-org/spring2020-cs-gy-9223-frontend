@@ -2,6 +2,7 @@ from django.db import models
 from annoying.fields import JSONField
 
 
+# This model is temporary for testing, it will be replaced by the backend team
 class Event(models.Model):
     event_name = models.CharField(max_length=100, null=False, unique=True)
     event_location = models.CharField(max_length=100, null=False, unique=False)
@@ -12,6 +13,7 @@ class Event(models.Model):
         return Event.__name__
 
 
+# This model is temporary for testing, it will be replaced by the backend team
 class SensorFields(models.Model):
     field_names = JSONField(blank=True, null=False)
     field_display_names = JSONField(blank=True, null=False)
@@ -21,22 +23,23 @@ class SensorFields(models.Model):
         return SensorFields.__name__
 
 
+# This model is temporary for testing, it will be replaced by the backend team
 class CustomSensor(models.Model):
     sensor_name = models.CharField(max_length=20, null=False, unique=True)
     sensor_display_name = models.CharField(max_length=20, null=False, unique=True)
-    fields = models.OneToOneField(
-        SensorFields, on_delete=models.CASCADE, blank=False, null=False,
+    fields = models.ForeignKey(
+        SensorFields, on_delete=models.CASCADE, blank=False, null=True,
     )
 
     def __str__(self):  # pragma: no cover
         return CustomSensor.__name__
 
 
+# This model is temporary for testing, it will be replaced by the backend team
 class SensorData(models.Model):
-    event_id = models.ForeignKey(  # same event may be associated with multiple sensors
+    event_id = models.ForeignKey(
         Event, on_delete=models.CASCADE, blank=False, null=False,
     )
-    # session id?
     date = models.DateTimeField(null=False)
     custom_sensor_id = models.ForeignKey(
         CustomSensor, on_delete=models.CASCADE, blank=False, null=False,
