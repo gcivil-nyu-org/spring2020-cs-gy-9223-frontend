@@ -1,6 +1,14 @@
 from django.urls import path
-from .views import simulator, views, dashboard, can, stopwatch, event, sensor, \
-    sensor_data
+from .views import (
+    simulator,
+    views,
+    dashboard,
+    can,
+    stopwatch,
+    event,
+    sensor,
+    sensor_data,
+)
 
 app_name = "mercury"
 urlpatterns = [

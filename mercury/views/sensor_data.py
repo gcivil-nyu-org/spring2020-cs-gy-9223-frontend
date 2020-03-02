@@ -22,4 +22,3 @@ class SensorDataView(TemplateView):
 
         print(data)
         return HttpResponse(json.dumps(data))
-
