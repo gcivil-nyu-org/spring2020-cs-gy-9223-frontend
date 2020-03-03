@@ -1,7 +1,8 @@
 from django.db import models
+from annoying.fields import JSONField
 
 
-# Note: the Event will have an ID automatically
+# This model is temporary for testing, it will be replaced by the backend team
 class Event(models.Model):
     event_name = models.CharField(max_length=100, null=False, unique=True)
     event_location = models.CharField(max_length=100, null=False, unique=False)
@@ -10,6 +11,43 @@ class Event(models.Model):
 
     def __str__(self):  # pragma: no cover
         return Event.__name__
+
+
+# This model is temporary for testing, it will be replaced by the backend team
+class SensorFields(models.Model):
+    field_names = JSONField(blank=True, null=False)
+    field_display_names = JSONField(blank=True, null=False)
+    data_types = JSONField(blank=True, null=False)
+
+    def __str__(self):  # pragma: no cover
+        return SensorFields.__name__
+
+
+# This model is temporary for testing, it will be replaced by the backend team
+class CustomSensor(models.Model):
+    sensor_name = models.CharField(max_length=20, null=False, unique=True)
+    sensor_display_name = models.CharField(max_length=20, null=False, unique=True)
+    fields = models.ForeignKey(
+        SensorFields, on_delete=models.CASCADE, blank=False, null=True,
+    )
+
+    def __str__(self):  # pragma: no cover
+        return CustomSensor.__name__
+
+
+# This model is temporary for testing, it will be replaced by the backend team
+class SensorData(models.Model):
+    event_id = models.ForeignKey(
+        Event, on_delete=models.CASCADE, blank=False, null=False,
+    )
+    date = models.DateTimeField(null=False)
+    custom_sensor_id = models.ForeignKey(
+        CustomSensor, on_delete=models.CASCADE, blank=False, null=False,
+    )
+    data = JSONField(blank=True, null=False)
+
+    def __str__(self):  # pragma: no cover
+        return SensorData.__name__
 
 
 class TemperatureSensor(models.Model):
