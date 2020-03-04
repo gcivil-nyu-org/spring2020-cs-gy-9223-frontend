@@ -10,4 +10,3 @@ class PitCrewView(TemplateView):
     @require_event_code
     def get(self, request, **kwargs):
         return render(request, self.template_name, {})
-
