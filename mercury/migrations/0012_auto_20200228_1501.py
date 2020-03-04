@@ -6,29 +6,25 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('mercury', '0011_auto_20200227_2339'),
+        ("mercury", "0011_auto_20200227_2339"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='customsensor',
-            old_name='name',
-            new_name='sensor_display_name',
+            model_name="customsensor", old_name="name", new_name="sensor_display_name",
         ),
         migrations.RenameField(
-            model_name='sensorfields',
-            old_name='display_names',
-            new_name='field_display_names',
+            model_name="sensorfields",
+            old_name="display_names",
+            new_name="field_display_names",
         ),
         migrations.RenameField(
-            model_name='sensorfields',
-            old_name='sensor_names',
-            new_name='field_names',
+            model_name="sensorfields", old_name="sensor_names", new_name="field_names",
         ),
         migrations.AddField(
-            model_name='customsensor',
-            name='sensor_name',
-            field=models.CharField(default='default_name', max_length=20, unique=True),
+            model_name="customsensor",
+            name="sensor_name",
+            field=models.CharField(default="default_name", max_length=20, unique=True),
             preserve_default=False,
         ),
     ]

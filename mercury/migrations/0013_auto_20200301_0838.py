@@ -7,14 +7,17 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('mercury', '0012_auto_20200228_1501'),
+        ("mercury", "0012_auto_20200228_1501"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='customsensor',
-            name='fields',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.
-                                    CASCADE, to='mercury.SensorFields'),
+            model_name="customsensor",
+            name="fields",
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="mercury.SensorFields",
+            ),
         ),
     ]
