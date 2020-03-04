@@ -31,6 +31,20 @@
     {% endif %}
     <br><br>
 
+    <!-- Events -->
+    {% if request.path == "/events/" %}
+        <div class="grafana-current-tab sidebar-btn">
+            <i class="material-icons">timer</i>
+            <br>Events
+        </div>
+    {% else %}
+        <a class="grafana-btn grafana-btn-gray sidebar-btn" href="{% url 'mercury:events' %}">
+            <i class="material-icons">timer</i>
+            <br>Events
+        </a>
+    {% endif %}
+    <br><br>
+
     <!-- Stopwatch -->
     {% if request.path == "/stopwatch/" %}
         <div class="grafana-current-tab sidebar-btn">

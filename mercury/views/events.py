@@ -10,15 +10,16 @@ log = logging.getLogger(__name__)
 log.setLevel(logging.ERROR)
 
 
-class CreateEventView(TemplateView):
+class CreateEventsView(TemplateView):
     """This is the view for creating a new event."""
 
-    template_name = "event.html"
+    template_name = "events.html"
 
     @require_event_code
     def get(self, request, *args, **kwargs):
+        events = Event.objects.all().order_by("id")
         event_form = EventForm()
-        context = {"event_form": event_form}
+        context = {"event_form": event_form, "events": events}
         return render(request, self.template_name, context)
 
     @require_event_code
@@ -34,6 +35,8 @@ class CreateEventView(TemplateView):
                 date=post_event_date,
                 comments=post_event_comments,
             )
-
             event_data.save()
-        return render(request, "dashboard.html")
+            events = Event.objects.all().order_by("id")
+            event_form = EventForm()
+            context = {"event_form": event_form, "events": events}
+            return render(request, "events.html", context)
