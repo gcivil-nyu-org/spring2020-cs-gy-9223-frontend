@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
      <head>
         <meta charset="UTF-8">
         <title>Mercury Simulator</title>
@@ -17,12 +17,27 @@
                 <div>
                     <!-- events is a list passed in the context if there are any events, otherwise will be an empty list -->
                     {% if events %}
-                        Current event is :  {{ events.0.event_name }}
-                    <a class="grafana-btn grafana-btn-gray" id= "accordion-btn" onclick="displayForm()">
-                        Change event
-                        <i class="material-icons-outlined" id="show_form" style="display: block">expand_more</i>
-                        <i class="material-icons-outlined" id="hide_form" style="display: none">expand_less</i>
-                    </a>
+                        <b>Current event details</b>
+                        <table class="table table-bordered table-striped mb-0">
+                                <thead>
+                                <tr bgcolor="#e0efdf">
+                                    <th>NAME</th>
+                                    <th>LOCATION</th>
+                                    <th>DATE</th>
+                                    <th>COMMENTS</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{ events.0.event_name }}</td>
+                                        <td>{{ events.0.event_location }}</td>
+                                        <td>{{ events.0.date }}</td>
+                                        <td>{{ events.0.comments }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        <input type="submit" value="change event"></input>
+                        <a href="/event">Add a new event</a>
                     <div id="accordion-event-form">
                         Select which event to change to.
                         <div class="table-wrapper-scroll-y my-custom-scrollbar">
@@ -54,7 +69,6 @@
                     <div>There are no events yet.</div>
                     <div><a href="/event">Create an event</a></div>
                     {% endif %}
-
                 </div>
         </div>
         <div id="grafana-base">
