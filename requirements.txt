@@ -7,3 +7,4 @@ python-dotenv==0.10.*
 whitenoise==4.1.4
 django-annoying
 djangorestframework
+selenium==3.141.0
