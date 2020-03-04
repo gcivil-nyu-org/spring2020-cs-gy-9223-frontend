@@ -9,67 +9,96 @@ import json
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('mercury', '0008_auto_20200225_1553'),
+        ("mercury", "0008_auto_20200225_1553"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='CustomSensor',
+            name="CustomSensor",
             fields=[
-                ('id', models.
-                    AutoField(
-                              auto_created=True,
-                              primary_key=True,
-                              serialize=False,
-                              verbose_name='ID')),
-                ('name', models.CharField(max_length=20, unique=True)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=20, unique=True)),
             ],
         ),
         migrations.CreateModel(
-            name='SensorFields',
+            name="SensorFields",
             fields=[
-                ('id', models.
-                    AutoField(
-                              auto_created=True,
-                              primary_key=True,
-                              serialize=False,
-                              verbose_name='ID')),
-                ('sensor_names', annoying.fields.
-                    JSONField(blank=True,
-                              deserializer=json.loads,
-                              serializer=annoying.fields.dumps)),
-                ('display_names', annoying.fields.
-                    JSONField(blank=True,
-                              deserializer=json.loads,
-                              serializer=annoying.fields.dumps)),
-                ('data_types', annoying.fields.
-                    JSONField(blank=True,
-                              deserializer=json.loads,
-                              serializer=annoying.fields.dumps)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "sensor_names",
+                    annoying.fields.JSONField(
+                        blank=True,
+                        deserializer=json.loads,
+                        serializer=annoying.fields.dumps,
+                    ),
+                ),
+                (
+                    "display_names",
+                    annoying.fields.JSONField(
+                        blank=True,
+                        deserializer=json.loads,
+                        serializer=annoying.fields.dumps,
+                    ),
+                ),
+                (
+                    "data_types",
+                    annoying.fields.JSONField(
+                        blank=True,
+                        deserializer=json.loads,
+                        serializer=annoying.fields.dumps,
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='SensorData',
+            name="SensorData",
             fields=[
-                ('id', models.
-                    AutoField(
-                              auto_created=True,
-                              primary_key=True,
-                              serialize=False,
-                              verbose_name='ID')),
-                ('date', models.DateTimeField()),
-                ('custom_sensor_id', models.
-                    OneToOneField(on_delete=django.db.models.deletion.CASCADE,
-                                  to='mercury.CustomSensor')),
-                ('event_id',
-                    models.ForeignKey(on_delete=django.db.models.deletion.CASCADE,
-                                      to='mercury.Event')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("date", models.DateTimeField()),
+                (
+                    "custom_sensor_id",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="mercury.CustomSensor",
+                    ),
+                ),
+                (
+                    "event_id",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="mercury.Event"
+                    ),
+                ),
             ],
         ),
         migrations.AddField(
-            model_name='customsensor',
-            name='fields',
-            field=models.OneToOneField(on_delete=django.db.models.deletion.CASCADE,
-                                       to='mercury.SensorFields'),
+            model_name="customsensor",
+            name="fields",
+            field=models.OneToOneField(
+                on_delete=django.db.models.deletion.CASCADE, to="mercury.SensorFields"
+            ),
         ),
     ]
