@@ -6,6 +6,10 @@ python:
 addons:
     firefox: latest
 
+dist: xenial
+services:
+    - xvfb
+
 services:
 - postgresql
 
