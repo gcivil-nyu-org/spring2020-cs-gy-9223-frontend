@@ -8,16 +8,15 @@ import json
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('mercury', '0009_auto_20200227_2322'),
+        ("mercury", "0009_auto_20200227_2322"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='sensordata',
-            name='data',
-            field=annoying.fields.
-            JSONField(blank=True,
-                      deserializer=json.loads,
-                      serializer=annoying.fields.dumps),
+            model_name="sensordata",
+            name="data",
+            field=annoying.fields.JSONField(
+                blank=True, deserializer=json.loads, serializer=annoying.fields.dumps
+            ),
         ),
     ]
