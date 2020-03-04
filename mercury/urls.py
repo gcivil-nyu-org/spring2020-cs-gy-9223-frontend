@@ -8,6 +8,7 @@ from .views import (
     event,
     sensor,
     sensor_data,
+    events,
 )
 
 app_name = "mercury"
@@ -23,4 +24,5 @@ urlpatterns = [
     path("event/", event.CreateEventView.as_view(), name="event"),
     path("sensor/", sensor.CreateSensorView.as_view(), name="sensor"),
     path("sensor_data/", sensor_data.SensorDataView.as_view(), name="sensor_data"),
+    path("events/", events.CreateEventsView.as_view(), name="events"),
 ]
