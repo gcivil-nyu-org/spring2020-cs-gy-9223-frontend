@@ -1,5 +1,6 @@
 from mercury.tests.selenium_tests.selenium_base import SeleniumTestBase
-#from selenium import webdriver
+
+# from selenium import webdriver
 
 from selenium.webdriver import Firefox
 from selenium.webdriver.firefox.options import Options
@@ -8,9 +9,9 @@ from selenium.webdriver.firefox.options import Options
 class LoginTest(SeleniumTestBase):
     def setUp(self):
         self.set_test_code()
-        #self.wd = webdriver.Firefox()
+        # self.wd = webdriver.Firefox()
         options = Options()
-        options.add_argument('-headless')
+        options.add_argument("-headless")
         self.wd = Firefox(firefox_options=options)
         self.wd.implicitly_wait(10)
 
