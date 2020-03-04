@@ -59,6 +59,20 @@
     {% endif %}
     <br><br>
 
+    <!-- Configure Sensors -->
+    {% if request.path == "/sensor/" %}
+        <div class="grafana-current-tab sidebar-btn">
+            <i class="material-icons">tune</i>
+            <br>Configure Sensors
+        </div>
+    {% else %}
+        <a class="grafana-btn grafana-btn-gray sidebar-btn" href="{% url 'mercury:sensor' %}">
+            <i class="material-icons">tune</i>
+            <br>Configure Sensors
+        </a>
+    {% endif %}
+    <br><br>
+
     <!-- Simulator -->
     {% if request.path == "/simulator/" %}
         <div class="grafana-current-tab sidebar-btn">
