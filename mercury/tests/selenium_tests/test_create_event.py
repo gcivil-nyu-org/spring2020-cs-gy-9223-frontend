@@ -1,7 +1,6 @@
 from mercury.tests.selenium_tests.selenium_base import SeleniumTestBase
 from django.urls import reverse
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
 
 
 class CreateEventTest(SeleniumTestBase):
@@ -16,7 +15,7 @@ class CreateEventTest(SeleniumTestBase):
     def test_create_event(self):
         # login with testcode
         self.login_test_code()
-        
+
         # create a new event
         self.open(reverse("mercury:event"))
         self.wd.find_element_by_id("id_event_name").send_keys("event1")
@@ -35,7 +34,7 @@ class CreateEventTest(SeleniumTestBase):
         event_loc = self.wd.find_element_by_xpath(field.format(2)).text
         event_date = self.wd.find_element_by_xpath(field.format(3)).text
         event_comments = self.wd.find_element_by_xpath(field.format(4)).text
-        
+
         # check new event
         self.assertEqual(event_name, "event1")
         self.assertEqual(event_loc, "New York")

@@ -1,4 +1,3 @@
-from django.test import LiveServerTestCase
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from django.urls import reverse
 
@@ -9,19 +8,20 @@ class SeleniumTestBase(StaticLiveServerTestCase):
     """
     Base class for selenium tests
     """
+
     def open(self, url):
         self.wd.get("{}{}".format(self.live_server_url, url))
 
     def print_current_url(self):
         url = self.wd.current_url
-        print('\n' + '-' * len(url))
+        print("\n" + "-" * len(url))
         print(url)
-        print('-' * len(url))
+        print("-" * len(url))
 
     def set_test_code(self):
         self.test_code = "testcode"
         EventCodeAccess.objects.create(event_code=self.test_code, enabled=True)
-    
+
     def login_test_code(self):
         # open index, redirects to login
         self.open(reverse("mercury:EventAccess"))
